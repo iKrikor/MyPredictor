@@ -13,7 +13,35 @@
 		F128DD1D1BFE7BE4000201DA /* MyPredictor.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F128DD1B1BFE7BE4000201DA /* MyPredictor.xcdatamodeld */; };
 		F128DD1F1BFE7BE4000201DA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F128DD1E1BFE7BE4000201DA /* Assets.xcassets */; };
 		F128DD221BFE7BE4000201DA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F128DD201BFE7BE4000201DA /* LaunchScreen.storyboard */; };
+		F128DD301BFE7BF9000201DA /* KeyboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F128DD2F1BFE7BF9000201DA /* KeyboardViewController.swift */; };
+		F128DD341BFE7BF9000201DA /* MyPredictorKeyboard.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = F128DD2D1BFE7BF9000201DA /* MyPredictorKeyboard.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		F128DD3A1BFE7C51000201DA /* Trie.swift in Sources */ = {isa = PBXBuildFile; fileRef = F128DD391BFE7C51000201DA /* Trie.swift */; };
+		F12D90851C0263D300136819 /* MyPredictor.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F128DD1B1BFE7BE4000201DA /* MyPredictor.xcdatamodeld */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		F128DD321BFE7BF9000201DA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F128DD091BFE7BE4000201DA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F128DD2C1BFE7BF9000201DA;
+			remoteInfo = MyPredictorKeyboard;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		F128DD381BFE7BF9000201DA /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				F128DD341BFE7BF9000201DA /* MyPredictorKeyboard.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		F128DD111BFE7BE4000201DA /* MyPredictor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyPredictor.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -24,10 +52,23 @@
 		F128DD1E1BFE7BE4000201DA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F128DD211BFE7BE4000201DA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F128DD231BFE7BE4000201DA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F128DD2D1BFE7BF9000201DA /* MyPredictorKeyboard.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = MyPredictorKeyboard.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		F128DD2F1BFE7BF9000201DA /* KeyboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardViewController.swift; sourceTree = "<group>"; };
+		F128DD311BFE7BF9000201DA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F128DD391BFE7C51000201DA /* Trie.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Trie.swift; sourceTree = "<group>"; };
+		F12D90861C0264D900136819 /* MyPredictor.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = MyPredictor.entitlements; sourceTree = "<group>"; };
+		F12D90871C02650100136819 /* MyPredictorKeyboard.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = MyPredictorKeyboard.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		F128DD0E1BFE7BE4000201DA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F128DD2A1BFE7BF9000201DA /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -41,6 +82,7 @@
 			isa = PBXGroup;
 			children = (
 				F128DD131BFE7BE4000201DA /* MyPredictor */,
+				F128DD2E1BFE7BF9000201DA /* MyPredictorKeyboard */,
 				F128DD121BFE7BE4000201DA /* Products */,
 			);
 			sourceTree = "<group>";
@@ -49,6 +91,7 @@
 			isa = PBXGroup;
 			children = (
 				F128DD111BFE7BE4000201DA /* MyPredictor.app */,
+				F128DD2D1BFE7BF9000201DA /* MyPredictorKeyboard.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -56,6 +99,7 @@
 		F128DD131BFE7BE4000201DA /* MyPredictor */ = {
 			isa = PBXGroup;
 			children = (
+				F12D90861C0264D900136819 /* MyPredictor.entitlements */,
 				F128DD141BFE7BE4000201DA /* AppDelegate.swift */,
 				F128DD161BFE7BE4000201DA /* ViewController.swift */,
 				F128DD181BFE7BE4000201DA /* Main.storyboard */,
@@ -65,6 +109,17 @@
 				F128DD1B1BFE7BE4000201DA /* MyPredictor.xcdatamodeld */,
 			);
 			path = MyPredictor;
+			sourceTree = "<group>";
+		};
+		F128DD2E1BFE7BF9000201DA /* MyPredictorKeyboard */ = {
+			isa = PBXGroup;
+			children = (
+				F12D90871C02650100136819 /* MyPredictorKeyboard.entitlements */,
+				F128DD2F1BFE7BF9000201DA /* KeyboardViewController.swift */,
+				F128DD311BFE7BF9000201DA /* Info.plist */,
+				F128DD391BFE7C51000201DA /* Trie.swift */,
+			);
+			path = MyPredictorKeyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -77,15 +132,34 @@
 				F128DD0D1BFE7BE4000201DA /* Sources */,
 				F128DD0E1BFE7BE4000201DA /* Frameworks */,
 				F128DD0F1BFE7BE4000201DA /* Resources */,
+				F128DD381BFE7BF9000201DA /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				F128DD331BFE7BF9000201DA /* PBXTargetDependency */,
 			);
 			name = MyPredictor;
 			productName = MyPredictor;
 			productReference = F128DD111BFE7BE4000201DA /* MyPredictor.app */;
 			productType = "com.apple.product-type.application";
+		};
+		F128DD2C1BFE7BF9000201DA /* MyPredictorKeyboard */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F128DD351BFE7BF9000201DA /* Build configuration list for PBXNativeTarget "MyPredictorKeyboard" */;
+			buildPhases = (
+				F128DD291BFE7BF9000201DA /* Sources */,
+				F128DD2A1BFE7BF9000201DA /* Frameworks */,
+				F128DD2B1BFE7BF9000201DA /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MyPredictorKeyboard;
+			productName = MyPredictorKeyboard;
+			productReference = F128DD2D1BFE7BF9000201DA /* MyPredictorKeyboard.appex */;
+			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
 
@@ -99,6 +173,21 @@
 				TargetAttributes = {
 					F128DD101BFE7BE4000201DA = {
 						CreatedOnToolsVersion = 7.1.1;
+						DevelopmentTeam = V4S3566GQY;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+						};
+					};
+					F128DD2C1BFE7BF9000201DA = {
+						CreatedOnToolsVersion = 7.1.1;
+						DevelopmentTeam = V4S3566GQY;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -116,6 +205,7 @@
 			projectRoot = "";
 			targets = (
 				F128DD101BFE7BE4000201DA /* MyPredictor */,
+				F128DD2C1BFE7BF9000201DA /* MyPredictorKeyboard */,
 			);
 		};
 /* End PBXProject section */
@@ -128,6 +218,13 @@
 				F128DD221BFE7BE4000201DA /* LaunchScreen.storyboard in Resources */,
 				F128DD1F1BFE7BE4000201DA /* Assets.xcassets in Resources */,
 				F128DD1A1BFE7BE4000201DA /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F128DD2B1BFE7BF9000201DA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -144,7 +241,25 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		F128DD291BFE7BF9000201DA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F128DD301BFE7BF9000201DA /* KeyboardViewController.swift in Sources */,
+				F12D90851C0263D300136819 /* MyPredictor.xcdatamodeld in Sources */,
+				F128DD3A1BFE7C51000201DA /* Trie.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		F128DD331BFE7BF9000201DA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F128DD2C1BFE7BF9000201DA /* MyPredictorKeyboard */;
+			targetProxy = F128DD321BFE7BF9000201DA /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		F128DD181BFE7BE4000201DA /* Main.storyboard */ = {
@@ -251,10 +366,15 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = MyPredictor/MyPredictor.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = MyPredictor/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = krikor.MyPredictor;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -262,10 +382,45 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = MyPredictor/MyPredictor.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = MyPredictor/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = krikor.MyPredictor;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+			};
+			name = Release;
+		};
+		F128DD361BFE7BF9000201DA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = MyPredictorKeyboard/MyPredictorKeyboard.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				INFOPLIST_FILE = MyPredictorKeyboard/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = krikor.MyPredictor.MyPredictorKeyboard;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		F128DD371BFE7BF9000201DA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = MyPredictorKeyboard/MyPredictorKeyboard.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				INFOPLIST_FILE = MyPredictorKeyboard/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = krikor.MyPredictor.MyPredictorKeyboard;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				SKIP_INSTALL = YES;
 			};
 			name = Release;
 		};
@@ -288,6 +443,16 @@
 				F128DD281BFE7BE4000201DA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F128DD351BFE7BF9000201DA /* Build configuration list for PBXNativeTarget "MyPredictorKeyboard" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F128DD361BFE7BF9000201DA /* Debug */,
+				F128DD371BFE7BF9000201DA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
