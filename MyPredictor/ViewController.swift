@@ -23,7 +23,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         // Do any additional setup after loading the view, typically from a nib.
         
         let appDel: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        let context: NSManagedObjectContext = appDel.managedObjectContext   
+        let context: NSManagedObjectContext = appDel.managedObjectContext
         
         let request = NSFetchRequest(entityName: "Word")
         
@@ -94,7 +94,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         
         let word = textField.text! + " "
         
-        if(word != "")
+        if(word != " ")
         {
             let words = word.componentsSeparatedByString(" ")
             
@@ -103,7 +103,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             
             var newWord = NSEntityDescription.insertNewObjectForEntityForName("Word", inManagedObjectContext: context)
             
-            newWord.setPrimitiveValue(words[0], forKey: "word")
+            newWord.setPrimitiveValue(words[0].lowercaseString, forKey: "word")
             newWord.setPrimitiveValue(0, forKey: "frec")
             
             do

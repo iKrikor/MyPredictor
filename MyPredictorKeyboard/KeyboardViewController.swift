@@ -14,6 +14,7 @@ var trie = Trie()
 var caps = true;
 var predictiveButtons = [UIButton]()
 var word = ""
+var words: Array<TrieNode>!
 
 class KeyboardViewController: UIInputViewController {
     
@@ -27,50 +28,15 @@ class KeyboardViewController: UIInputViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        
-//        let appDel: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-//        let context: NSManagedObjectContext = appDel.managedObjectContext
-//        
-//        let request = NSFetchRequest(entityName: "Word")
-//        
-//        request.returnsObjectsAsFaults = false
-//        
-//        do
-//        {
-//           let result =  try context.executeFetchRequest(request)
-//        }
-//        catch
-//        {
-//            
-//        }
-
-        
-        
-        
-        
-        
-        
-        trie.addWord("balls", frec: 1)
-        trie.addWord("ball", frec: 2)
-        trie.addWord("ballard",frec: 3)
-        trie.addWord("batter", frec:4)
-        trie.addWord("bat",frec: 10)
-        trie.addWord("beauty",frec: 20)
-        trie.addWord("bar",frec: 1)
-        trie.addWord("cat",frec: 2)
-        trie.addWord("cataclismo",frec: 4)
-        trie.addWord("cosa",frec: 5)
-        trie.addWord("dog",frec: 4)
-        trie.addWord("dagger",frec: 2)
-        trie.addWord("dikjstra",frec: 3)
-        trie.addWord("krikor",frec: 1000)
+                
+        reloadTrie()
         
         
         let buttonTitles0 = ["","",""]
         let buttonTitles1 = ["Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P"]
         let buttonTitles2 = ["A", "S", "D", "F", "G", "H", "J", "K", "L"]
         let buttonTitles3 = ["CP", "Z", "X", "C", "V", "B", "N", "M", "BP"]
-        let buttonTitles4 = ["CHG", "SPACE", "RETURN"]
+        let buttonTitles4 = ["CHG", "SPACE", "RELOAD"]
         
         let row0 = createRowOfPredictiveButtons(buttonTitles0)
         let row1 = createRowOfButtons(buttonTitles1)
@@ -200,6 +166,15 @@ class KeyboardViewController: UIInputViewController {
             if(!title.isEmpty)
             {
                 proxy.insertText(title.substringFromIndex(title.startIndex.advancedBy(word.characters.count))+" ")
+                updateCoreData(title)
+                
+                for w in words
+                {
+                    if (w.key == title)
+                    {
+                        w.isFinal++
+                    }
+                }
                 word = ""
                 findWords()
             }
@@ -221,9 +196,8 @@ class KeyboardViewController: UIInputViewController {
                 {
                     word = word.substringToIndex(word.endIndex.predecessor())
                 }
-            case "RETURN" :
-                proxy.insertText("\n")
-                word=""
+            case "RELOAD" :
+                reloadTrie()
             case "SPACE" :
                 proxy.insertText(" ")
             case "CHG" :
@@ -251,7 +225,7 @@ class KeyboardViewController: UIInputViewController {
     
     func findWords()
     {
-        var words = trie.findWord(word)
+        words = trie.findWord(word)
         
         var i: Int
         if(words != nil)
@@ -271,6 +245,111 @@ class KeyboardViewController: UIInputViewController {
                 buttons.setTitle("", forState: UIControlState.Normal)
             }
         }
+    }
+    
+    func reloadTrie(){
+        
+        trie = Trie()
+        var storeURL = NSFileManager.defaultManager().containerURLForSecurityApplicationGroupIdentifier("group.mypredictor")
+        storeURL = storeURL?.URLByAppendingPathComponent("MyPredictor.sqlite")
+        let modelURL = NSBundle.mainBundle().URLForResource("MyPredictor", withExtension: "momd")
+        let model = NSManagedObjectModel(contentsOfURL: modelURL!)
+        let coordinator = NSPersistentStoreCoordinator(managedObjectModel: model!)
+        do
+        {
+            try coordinator.addPersistentStoreWithType(NSSQLiteStoreType, configuration: nil, URL: storeURL, options: nil)
+        }
+        catch
+        {
+        }
+        
+        var context = NSManagedObjectContext()
+        context.persistentStoreCoordinator = coordinator
+        
+        let request = NSFetchRequest(entityName: "Word")
+        
+        request.returnsObjectsAsFaults = false
+        
+        do
+        {
+            let results =  try context.executeFetchRequest(request)
+            for result in results as! [NSManagedObject]
+            {
+                
+                if let word = result.valueForKey("word") as? String
+                {
+                    let frec = result.valueForKey("frec") as? Int
+                    trie.addWord(word, frec: frec!)
+                }
+                
+            }
+            
+            
+        }
+        catch
+        {
+            print("Falló")
+        }
+    }
+    
+    
+    func updateCoreData(updateWord: String){
+        var storeURL = NSFileManager.defaultManager().containerURLForSecurityApplicationGroupIdentifier("group.mypredictor")
+        storeURL = storeURL?.URLByAppendingPathComponent("MyPredictor.sqlite")
+        let modelURL = NSBundle.mainBundle().URLForResource("MyPredictor", withExtension: "momd")
+        let model = NSManagedObjectModel(contentsOfURL: modelURL!)
+        let coordinator = NSPersistentStoreCoordinator(managedObjectModel: model!)
+        do
+        {
+            try coordinator.addPersistentStoreWithType(NSSQLiteStoreType, configuration: nil, URL: storeURL, options: nil)
+        }
+        catch
+        {
+        }
+        
+        var context = NSManagedObjectContext()
+        context.persistentStoreCoordinator = coordinator
+        
+        let request = NSFetchRequest(entityName: "Word")
+        
+        request.returnsObjectsAsFaults = false
+        
+        request.predicate = NSPredicate(format: "word = %@", updateWord)
+        
+        do
+        {
+            let results =  try context.executeFetchRequest(request)
+            
+            if results.count > 0
+            {
+                for result in results as! [NSManagedObject]
+                {
+                    
+                    result.setValue((result.valueForKey("frec") as? Int)!+1, forKey: "frec")
+                    
+                    
+                    do
+                    {
+                        try context.save()
+                    }
+                    catch
+                    {
+                        print("Not saving")
+                    }
+                    
+                }
+            }
+        }
+        catch
+        {
+            print("Fetch failed")
+        }
+        
+        
+        
+        
+        
+
     }
     
     
